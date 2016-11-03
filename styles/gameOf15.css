@@ -1,0 +1,20 @@
+table{
+  width: 400px;
+  height: 400px;
+  border-collapse: collapse;
+  background-color: lightblue;
+}
+
+table, td, th{
+  border: 1px solid black;
+  padding: 4px;
+  margin-top: 20px;
+}
+
+th{
+  text-align: center;
+  color: blue;
+  width: 100px;
+  height: 100px;
+  background-color: white;
+}
