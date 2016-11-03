@@ -11,7 +11,7 @@ var startProgram = function(){
   initialVal();
 }
 
-var myGet = function(id) {
+var _ = function(id) {
 	return document.getElementById(id);
 };
 
@@ -27,7 +27,7 @@ var vGenerage = function(){
 };
 
 var initialVal = function() {
-	var table = myGet("table");
+	var table = _("table");
   var output = "";
   if(!simpleGameFlag){
     empty = emptyIdx();
@@ -91,26 +91,26 @@ var initialVal = function() {
   // add click listener to table cells
   for(var i = 1; i<=vIdx; i++){
     (function(i) {
-    myGet(i).addEventListener("click", function() {onClickFunction(i);});
+    _(i).addEventListener("click", function() {onClickFunction(i);});
     }(i));
   }
 
-  myGet('reset').addEventListener("click", function() {location.reload();});
-  myGet('simpleGame').addEventListener("click", simpleGame);
+  _('reset').addEventListener("click", function() {location.reload();});
+  _('simpleGame').addEventListener("click", simpleGame);
 };
 
 function onClickFunction(i){
   if((i+1==empty||i-1==empty||i+4==empty||i-4==empty)&&!winGame()){
     roundNum++;
-    myGet('output').innerHTML = 'Steps: '+roundNum;
-    myGet(empty).innerHTML = myGet(i).innerHTML;
-    myGet(i).innerHTML = "";
+    _('output').innerHTML = 'Steps: '+roundNum;
+    _(empty).innerHTML = _(i).innerHTML;
+    _(i).innerHTML = "";
     empty = i;
     if(winGame()){
       if (confirm("YOU WIN! Play again?") == true) {
         location.reload();
     } else {
-        myGet('output').innerHTML = 'YOU WIN';
+        _('output').innerHTML = 'YOU WIN';
     }
     }
   }
@@ -120,10 +120,10 @@ function onClickFunction(i){
 }
 
 var winGame = function(){
-  if(empty==16 && myGet(1).innerHTML==1 && myGet(2).innerHTML==2 && myGet(3).innerHTML==3 &&
-  myGet(4).innerHTML==4 && myGet(5).innerHTML==5 && myGet(6).innerHTML==6 && myGet(7).innerHTML==7 &&
-  myGet(8).innerHTML==8 && myGet(9).innerHTML==9 && myGet(10).innerHTML==10 && myGet(11).innerHTML==11 &&
-  myGet(12).innerHTML==12 && myGet(13).innerHTML==13 && myGet(14).innerHTML==14 && myGet(15).innerHTML==15){
+  if(empty==16 && _(1).innerHTML==1 && _(2).innerHTML==2 && _(3).innerHTML==3 &&
+  _(4).innerHTML==4 && _(5).innerHTML==5 && _(6).innerHTML==6 && _(7).innerHTML==7 &&
+  _(8).innerHTML==8 && _(9).innerHTML==9 && _(10).innerHTML==10 && _(11).innerHTML==11 &&
+  _(12).innerHTML==12 && _(13).innerHTML==13 && _(14).innerHTML==14 && _(15).innerHTML==15){
     return true;
   }
   else{
@@ -157,7 +157,7 @@ function startTime() {
     s++;
     checkTime_m(s);
     checkTime_h(m);
-    myGet('timer').innerHTML = 'Time: ' + h + ":" + m + ":" + s;
+    _('timer').innerHTML = 'Time: ' + h + ":" + m + ":" + s;
     if(!winGame()){
       var t = setTimeout(startTime, 1000);
     }
